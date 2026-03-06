@@ -5,19 +5,25 @@ import dotenv from "dotenv";
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
 import path from 'path'
+import { connectDB } from './lib/db.js';
 
 dotenv.config();
 const app=express();
 const PORT=process.env.PORT;
+
+app.use(express.json()); //req.body
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
 const __dirname=path.resolve()
 
 
-app.listen(PORT,()=> console.log(`Server is running on port ${PORT}`));
+app.listen(PORT,()=>{
+    console.log(`Server is running on port ${PORT}`)
+    connectDB();
+});
 
-//Deploying on sevalla
+//Deploying
 
 if(process.env.NODE_ENV==='production'){
     app.use(express.static(path.join(__dirname,'../frontend/dist')))
