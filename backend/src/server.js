@@ -1,5 +1,5 @@
 // const express= require('express')
-
+import cookieParser from 'cookie-parser';
 import express from 'express';
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
@@ -14,6 +14,7 @@ const PORT=ENV.PORT;
 app.use(express.json()); //req.body
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
+app.use(cookieParser());   
 
 const __dirname=path.resolve()
 
