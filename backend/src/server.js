@@ -12,6 +12,7 @@ const app=express();
 const PORT=ENV.PORT;
 
 app.use(express.json()); //req.body
+app.use(cors({origin: ENV.CLIENT_URL, credentials: true})); //CORS
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use(cookieParser());   
