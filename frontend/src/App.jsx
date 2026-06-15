@@ -5,6 +5,8 @@ import SignUpPage from "./pages/SignUpPage";
 import { useAuthStore } from "./store/useAuthStore";
 import { useEffect } from "react";
 import PageLoader from "./components/PageLoader";
+console.log("DEPLOY TEST 123");
+console.log("API URL:", import.meta.env.VITE_API_URL);
 
 import { Toaster } from "react-hot-toast";
 
